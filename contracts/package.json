@@ -1,0 +1,42 @@
+{
+  "name": "@klink/contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "build": "tsup lib/index.ts --sourcemap --format esm,cjs",
+    "types": "tsc --emitDeclarationOnly --declaration",
+    "watch:build": "npm-watch build",
+    "watch:types": "npm-watch types",
+    "dev": "concurrently \"npm:watch:build\" \"npm:watch:types\""
+  },
+  "watch": {
+    "build": {
+      "patterns": ["lib"],
+      "extensions": "ts",
+      "quite": true
+    },
+    "types": {
+      "patterns": ["lib"],
+      "extensions": "ts",
+      "quite": true
+    }
+  },
+  "peerDependencies": {
+    "@ts-rest/core": "^3.30.5",
+    "zod": "^3.22.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "npm-watch": "^0.11.0",
+    "tsup": "^8.0.1"
+  },
+  "files": [
+    "dist"
+  ]
+}

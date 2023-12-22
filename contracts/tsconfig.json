@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"strict": true,
+		"strictNullChecks": true,
+		"declarationMap": true,
+		"declaration": true,
+		"outDir": "dist"
+	}
+}

@@ -1,0 +1,20 @@
+{
+  "name": "nest-ts-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "contracts",
+    "main_service"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.1.3"
+  },
+  "dependencies": {
+    "@ts-rest/core": "^3.30.5",
+    "zod": "^3.22.4"
+  }
+}
