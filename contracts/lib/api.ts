@@ -3,20 +3,24 @@ import { z } from "zod";
 
 const c = initContract();
 
-export interface Post {
-  id: string;
-  title: string;
-  summary: string;
-  detail: string;
-  cover_img?: string;
-}
+const post = z.object({
+  id: z.string().uuid(),
+  title: z.string(),
+  summary: z.string(),
+  detail: z.string(),
+  cover_img: z.string().optional(),
+});
+export type Post = z.infer<typeof post>;
 
 export const apiContract = c.router({
   getPosts: {
     method: "GET",
     path: "/posts",
     responses: {
-      200: c.type<{ posts: Post[]; total: number }>(),
+      200: z.object({
+        total: z.number(),
+        posts: z.array(post),
+      }),
     },
     query: z.object({
       take: z.string().transform(Number).optional(),
@@ -29,7 +33,7 @@ export const apiContract = c.router({
     method: "GET",
     path: "/posts/:id",
     responses: {
-      200: c.type<Post | null>(),
+      200: z.union([post, z.null()]),
     },
     pathParams: z.object({ id: z.string() }),
     summary: "Get a post",
